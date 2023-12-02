@@ -15,4 +15,4 @@
 		yarn run build
 		yarn start
 
-	5. How to run on DigialOcean or other cloud VPS 
+	5. How to run on DigitalOcean or other cloud VPS 
