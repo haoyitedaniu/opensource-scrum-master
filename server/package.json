@@ -1,0 +1,25 @@
+{
+  "name": "opensource-scrum-master-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed-admin-user": "node ./scripts/seedAdminUser.js",
+    "start": "nodemon ./bin/www"
+  },
+  "author": "Tom Long, Kelly Kang",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "http-errors": "^1.7.1",
+    "mongodb": "^6.2.0",
+    "mongoose": "^5.4.11",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10",
+    "pug": "^2.0.3"
+  }
+}

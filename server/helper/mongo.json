@@ -1,0 +1,10 @@
+{
+  "development": {
+    "database": "opensource-scrum-master-db",
+    "host": "127.0.0.1",
+    "port": "27017"
+  },
+  "production": {
+    "use_env_variable": "MONGODB_URI"
+  }
+}
