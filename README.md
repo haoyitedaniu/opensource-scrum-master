@@ -146,4 +146,6 @@ Todo:
 
 	4)Add project admin so that only project admin users can create/delete users to the project or create/delete user stories under that project
 
+ 	5)CSS, allow showing stories list and login on mobile devices (so only showing up on wide screens)
+
 	
