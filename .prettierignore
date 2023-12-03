@@ -1,0 +1,6 @@
+/.cache
+/.github
+/client/build
+/node_modules
+/dist
+/src/assets/styles.css

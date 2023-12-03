@@ -8,7 +8,7 @@
     "seed-admin-user": "node ./scripts/seedAdminUser.js",
     "start": "nodemon ./bin/www"
   },
-  "author": "Tom Long, Kelly Kang",
+  "author": "Tom Long, Kelly Kang, Brent Liu",
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.3",

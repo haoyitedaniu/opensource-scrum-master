@@ -1,6 +1,8 @@
 {
-  "name": "opensource-scrum-master-backend",
+  "name": "opensource-scrum-master",
   "version": "0.0.1",
+  "license": "MIT",
+  "authors": ["Tom Long", "Kelly Kang","Brent Liu"],
   "private": true,
   "scripts": {
     "build": "concurrently \"cd client &&  env-cmd -f .env.production npm run build\"",

@@ -1,0 +1,40 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "search.exclude": {
+    "**/.git": true, // this is a default value
+    "**/.DS_Store": true
+  },
+  "editor.insertSpaces": true,
+  "files.exclude": {
+    "**/.git": true, // this is a default value
+    "**/.DS_Store": true // this is a default value
+    // "**/node_modules": true // this excludes all folders
+    // named "node_modules" from
+    // the explore tree
+    // alternative version
+    //  "node_modules": true    // this excludes the folder
+    // only from the root of
+    // your workspace
+  },
+  "css.validate": false, // Disable css built-in lint
+  "less.validate": false, // Disable less built-in lint
+  "scss.validate": false,
+  "codeium.enableSearch": true // Disable scss built-in lint
+  // "workbench.settings.openDefaultSettings": true
+}
