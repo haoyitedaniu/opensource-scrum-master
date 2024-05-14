@@ -37,14 +37,15 @@ class RemoveUser extends React.Component {
   }
 
   handleClick = (event) => {
-    //do not allow remove of currnt user
+    //do not allow remove of current user
     const currentUserName = this.getCurrentUserName()
     if (this.state.username === currentUserName) {
       alert('You cannot remove yourself')
       return
     }
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .post('/scrum/api/users/remove', {
+      .post(`${basename}/api/users/remove`, {
         username: this.state.username,
       })
       .then((response) => {

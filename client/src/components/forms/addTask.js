@@ -61,7 +61,10 @@ class AddTask extends React.Component {
 
   async getMaxTaskID() {
     //count number of existing tasks in the database
-    const promise = axios.get('/scrum/api/tasks/maxtaskid')
+
+    const basename = process.env.REACT_APP_BASENAME || ''
+
+    const promise = axios.get(`${basename}/api/tasks/maxtaskid`)
     const dataPromise = promise.then(async (response) => {
       return response.data.maxTaskID
     })
@@ -74,8 +77,9 @@ class AddTask extends React.Component {
     // console.log(this.state.dueDate)
   }
   getUsers() {
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .get('/scrum/api/users')
+      .get(`${basename}/api/users`)
       .then((r) => {
         this.setState({
           users: r.data,
@@ -108,9 +112,9 @@ class AddTask extends React.Component {
 
     this.setState({ count: count + 1 }, () => {
       // console.log('Here are the contributors', this.state.contributors)
-
+      const basename = process.env.REACT_APP_BASENAME || ''
       axios
-        .post('/scrum/api/tasks', {
+        .post(`${basename}/api/tasks`, {
           title: this.state.title,
           content: this.state.content,
           status: Number(this.props.status),

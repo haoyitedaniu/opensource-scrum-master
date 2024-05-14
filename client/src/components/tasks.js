@@ -58,8 +58,9 @@ class Tasks extends Component {
   api = (id) => {
     let yesno = prompt('Please enter yes to continue to delete this task')
     if (yesno && yesno.toLowerCase() === 'yes') {
+      const basename = process.env.REACT_APP_BASENAME || ''
       axios
-        .delete('/scrum/api/tasks/delete/' + id)
+        .delete(`${basename}/api/tasks/delete/` + id)
         .then(function (response) {
           if (response.status === '1') alert('ok')
         })

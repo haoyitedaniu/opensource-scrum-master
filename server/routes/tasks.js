@@ -188,7 +188,7 @@ router.get('/task/:id', (req, res) => {
 
 //Update a task by id
 router.put('/update/:id', (req, res) => {
-  console.log('here is req.body', req.body)
+  // console.log('here is req.body', req.body)
   const promise = Task.findByIdAndUpdate(req.params.id, req.body)
   promise
     .then((data) => {

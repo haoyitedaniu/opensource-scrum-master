@@ -1,151 +1,170 @@
-	This is open source scrum master tool that is suitable for small teams and for open source development
+    This is open source scrum master tool that is suitable for small teams and for open source development
 
-	1. How to download
+    1. How to download
 
-		On Linux/Mac (run in your home folder)
-			cd $HOME
-			git git@github.com:haoyitedaniu/opensource-scrum-master.git
-		On Windows (run in your documents folder)
-			Install gitbash following with https://git-scm.com/downloads
-			cd $HOME/Documents
-			git clone git@github.com:haoyitedaniu/opensource-scrum-master.git
+    	On Linux/Mac (run in your home folder)
+    		cd $HOME
+    		git git@github.com:haoyitedaniu/opensource-scrum-master.git
+    	On Windows (run in your documents folder)
+    		Install gitbash following with https://git-scm.com/downloads
+    		cd $HOME/Documents
+    		git clone git@github.com:haoyitedaniu/opensource-scrum-master.git
 
-	2. How to compile
-		#install NodeJs following https://nodejs.org/en/download 
-		#install npm following https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-		#install yarn by
+    2. How to compile
+    	#install NodeJs following https://nodejs.org/en/download
+    	#install npm following https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+    	#install yarn by
 
-		npm install -g yarn
-
-
-		#install packages for opensource-scrum-master server and client
-		cd opensource-scrum-master 
-		yarn run install 
-
-		#compile the client 
-		yarn run build
+    	npm install -g yarn
 
 
-	3. How to install mongodb
-		#This program uses mongodb community version and mongoose for back-end 
-		#Install mongodb following https://www.mongodb.com/docs/manual/administration/install-community/	
-		
-	4. How to run on local machine
+    	#install packages for opensource-scrum-master server and client
+    	cd opensource-scrum-master
 
-		yarn start
+    	#installl the concurrently package
+    	npm install concurrently
 
-		#
-		#The program will pre-populate a default user name with default password defined in server/scripts/seedAdminUser.js
-		#
+    	#install the rest of node packages
+    	yarn run install
 
-	5. How to run on DigitalOcean or other cloud VPS 
-		
-		#sign up on Digital Ocean
-
-		#create a project
-
-		#create a droplet under that project, choose latest ubuntu as OS
-
-		#create a firewall policy
-
-		#login into the ubuntu droplet with root
-
-			ssh root@xx.xx.xx.xx  #//here xx.xx.xx.xx is the IP address of your droplet
-
-			#install nginx
-
-			#install git
-
-			#install nodejs
-
-			#install npm
-
-			#install yarn 
+    	#compile the client in development mode
+    	yarn run build:dev
 
 
-			#install nano  #nano is an easy to use text editor
+    	#or compile the client in the productin mode
 
-			#install mongodb 
-
-				#follow https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
-
-			#start mognodb
-
-				systemctl start mongod 
-
-			#download the source code of opensource-scrum-master:
-
-		
-				cd $HOME
-				git clone git@github.com:haoyitedaniu/opensource-scrum-master.git
-
-			#compile the source code
-
-				cd opensource-scrum-master
-				yarn run install
-				yarn run build
-			
-			#run opensource-scrum-master
-		  		chmod +x ./start-scrum-master.sh  #make it executable 
-				./start-scrum-master.sh		# execute the program, which will run server on 3001 and client on 3000
-								# if you want to change ports, you need to edit ./start-scrum-master.sh file 
-
-			#setup the nginx 
-
-				systemctl stop nginx  #stop the nginx server
-
-				nano /etc/init.d/nginx/conf.d/local.conf  #edit a local server setup for the nginx 
-				
-				#Put the following content in the file
-
-				#=================/etc/init.d/nginx/conf.d/local.conf==============
+    	#compile the client in production mode
+    	yarn run build
 
 
 
-				#==================================================================
+    3. How to install mongodb
+    	#This program uses mongodb community version and mongoose for back-end
+    	#Install mongodb following https://www.mongodb.com/docs/manual/administration/install-community/
+
+    4. How to run on local machine
+
+    	yarn run start:dev  #run in development mode
+    		#check if back-end running:  http://localhost:3001
+    		#check if front-end running:  http://localhost:3000
+
+    	#or to run in production mode:
+    	yarn run start
+    		#check if back-end running:  http://localhost:3001
+    		#check if front-end running:  http://localhost:3000/master
+    			# where /master is the basename that you specified in client/.env.production
+
+    	#
+    	#The program will pre-populate a default user name with default password defined in server/scripts/seedAdminUser.js
+    	#
+
+    5. How to run on DigitalOcean or other cloud VPS
+
+    	#sign up on Digital Ocean
+
+    	#create a project
+
+    	#create a droplet under that project, choose latest ubuntu as OS
+
+    	#create a firewall policy
+
+    	#login into the ubuntu droplet with root
+
+    		ssh root@xx.xx.xx.xx  #//here xx.xx.xx.xx is the IP address of your droplet
+
+    		#install nginx
+
+    		#install git
+
+    		#install nodejs
+
+    		#install npm
+
+    		#install yarn
 
 
-				#Exit nano by Ctrl-x and choose save
-				#test the setup is okay
+    		#install nano  #nano is an easy to use text editor
 
-				nginx -t
+    		#install mongodb
 
-				#fix any errors you may see from this "nginx -t" command above
-				
-				#restart nginx if no errors
-				
-				systemctl restart nginx
+    			#follow https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 
-	
-			#How to visit the site: http://xx.xx.xx.xx/scrum   #where the xx.xx.xx.xx is the IP address of the server 
-	
-			#check the logs of the server/client run
+    		#start mognodb
 
-				cd $HOME/opensource-scrum-master 
-				tail -f scrum-backend.log.txt   #Ctrl-c to quit viewing the log
+    			systemctl start mongod
 
-				tail -f scrum-frontend.log.txt  #Ctrl-c to quit viewing the log
+    		#download the source code of opensource-scrum-master:
 
 
-			#How to shutdown
+    			cd $HOME
+    			git clone git@github.com:haoyitedaniu/opensource-scrum-master.git
 
-				cd HOME/opensource-scrum-master
-				chmod +x ./kill-scrum-master.sh 
-				./kill-scrum-master.sh   #will kill scrum-master codes and also codes running on port 3001 (back-end server) and 3000 (front-end client)
+    		#compile the source code in production mode
 
-				#Note if you use different ports, you need to edit ./kill-scrum-master.sh
+    			cd opensource-scrum-master
 
+    			npm install concurrently
+    			yarn run install #install the rest of the nodejs packages
+    			yarn run build	 #build the client in production mode
+
+    		#run opensource-scrum-master
+    	  	chmod +x ./start-scrum-master.sh  #make it executable
+    			./start-scrum-master.sh
+    		# execute the program, which will run server on 3001 and client on 3000
+    		# if you want to change ports, you need to edit ./start-scrum-master.sh file
+
+    		#setup the nginx
+
+    			systemctl stop nginx  #stop the nginx server
+
+    			nano /etc/init.d/nginx/conf.d/local.conf  #edit a local server setup for the nginx
+
+    			#Put the following content in the file
+
+    			#=================/etc/init.d/nginx/conf.d/local.conf==============
+
+
+
+    			#==================================================================
+
+
+    			#Exit nano by Ctrl-x and choose save
+    			#test the setup is okay
+
+    			nginx -t
+
+    			#fix any errors you may see from this "nginx -t" command above
+
+    			#restart nginx if no errors
+
+    			systemctl restart nginx
+
+
+    		#How to visit the site: http://xx.xx.xx.xx/scrum   #where the xx.xx.xx.xx is the IP address of the server
+
+    		#check the logs of the server/client run
+
+    			cd $HOME/opensource-scrum-master
+    			tail -f scrum-backend.log.txt   #Ctrl-c to quit viewing the log
+
+    			tail -f scrum-frontend.log.txt  #Ctrl-c to quit viewing the log
+
+    		#How to shutdown
+
+    			cd HOME/opensource-scrum-master
+    			chmod +x ./kill-scrum-master.sh
+    			./kill-scrum-master.sh   #will kill scrum-master codes and also codes running on port 3001 (back-end server) and 3000 (front-end client)
+
+    			#Note if you use different ports, you need to edit ./kill-scrum-master.sh
 
 Todo:
 
-	1)hide stories and tasks to non-login users
+    1)hide stories and tasks to non-login users
 
-	2)add projects model so that same site can be used to manage multiple projects
+    2)add projects model so that same site can be used to manage multiple projects
 
-	3)Assign users to one or multiple projects, so that different projects can have different set of users
+    3)Assign users to one or multiple projects, so that different projects can have different set of users
 
-	4)Add project admin so that only project admin users can create/delete users to the project or create/delete user stories under that project
+    4)Add project admin so that only project admin users can create/delete users to the project or create/delete user stories under that project
 
- 	5)CSS, allow showing stories list and login on mobile devices (so only showing up on wide screens)
-
-	
+5)CSS, allow showing stories list and login on mobile devices (so only showing up on wide screens)

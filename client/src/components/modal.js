@@ -30,8 +30,9 @@ class ModalExample extends React.Component {
     })
   }
   handleClick = (id) => {
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .put(`/scrum/api/tasks/update/${id}`, {
+      .put(`${basename}/api/tasks/update/${id}`, {
         title: this.state.title,
         content: this.state.content,
         status: this.state.status,

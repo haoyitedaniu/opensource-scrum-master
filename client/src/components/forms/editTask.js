@@ -85,8 +85,9 @@ class EditTask extends React.Component {
     })
   }
   getUsers() {
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .get('/scrum/api/users')
+      .get(`${basename}/api/users`)
       .then((r) => {
         let userContent
         const users = r.data
@@ -119,8 +120,10 @@ class EditTask extends React.Component {
       return
     }
     //call back end to to update the task with given id in this.state.count
+    const basename = process.env.REACT_APP_BASENAME || ''
+
     axios
-      .post('/scrum/api/tasks/update', {
+      .post(`${basename}/api/tasks/update`, {
         title: this.state.title,
         content: this.state.content,
         status: this.props.status,

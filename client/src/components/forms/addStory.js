@@ -59,8 +59,10 @@ class AddStory extends React.Component {
   }
 
   async getStoryCount() {
+    const basename = process.env.REACT_APP_BASENAME || ''
     //count number of existing stories in the database
-    const promise = axios.get('/scrum/api/story/count')
+    console.log('====basename=====:', basename)
+    const promise = axios.get(`${basename}/api/story/count`)
     const dataPromise = promise.then(async (response) => {
       var data = response.data.count
       const promises = data.map(getPromise)
@@ -79,7 +81,9 @@ class AddStory extends React.Component {
 
   async getMaxStoryID() {
     //count number of existing stories in the database
-    const promise = axios.get('/scrum/api/story/maxstoryid')
+    const basename = process.env.REACT_APP_BASENAME || ''
+    console.log('====basename=====:', basename)
+    const promise = axios.get(`${basename}/api/story/maxstoryid`)
     const dataPromise = promise.then(async (response) => {
       return response.data.maxStoryID
     })
@@ -105,8 +109,9 @@ class AddStory extends React.Component {
     //in the database instead
 
     this.setState({ count: count + 1 }, () => {
+      const basename = process.env.REACT_APP_BASENAME || ''
       axios
-        .post('/scrum/api/story', {
+        .post(`${basename}/api/story`, {
           title: this.state.title,
           content: this.state.content,
           createdBy: currentUserID, // this.props.createdBy,

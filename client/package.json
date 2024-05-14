@@ -15,15 +15,15 @@
     "react-dom": "^16.3.2",
     "react-drag-and-drop": "^2.4.0",
     "react-router": "^3.2.1",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^6.20.1",
     "react-scripts": "^2.1.5",
     "reactstrap": "^6.0.1",
     "semantic-ui-react": "^0.80.0"
   },
   "scripts": {
     "start-old": "react-scripts --openssl-legacy-provider start",
-    "start": "node server.js",
-    "start:dev": "env-cmd -f .env.development PORT=3000 PUBLIC_URL=/scrum/ REACT_APP_BASENAME=/scrum/ react-scripts --openssl-legacy-provider start",
+    "start": "env-cmd -f .env.production PORT=3000 node server.js",
+    "start:dev": "env-cmd -f .env.development PORT=3000  react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

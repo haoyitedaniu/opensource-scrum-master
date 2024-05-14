@@ -9,12 +9,21 @@ httpApp.use(express.static(path.join(__dirname, './build')))
 const backendUri = process.env.BACKEND_URI || 'http://localhost:3001'
 //proxy to back-end api calls
 //(note that it has to be infront of bodyParser and cookieParser for axios post to work)
+
+const basename = process.env.REACT_APP_BASENAME || ''
+
+const proxyProfixPath = `^${basename}/api` //
+const proxyRewrite = {}
+proxyRewrite[`^${basename}/api`] = ''
+// console.log('proxyRewrite:', proxyRewrite)
+
 const proxyOptions = {
   target: backendUri,
   changeOrigin: true,
   pathRewrite: {
     '^/api': '',
   },
+  // pathRewrite: proxyRewrite,
   secure: false,
   //here we can do cookieDomainRewrite etc
   //cookieDomainRewrite: {
@@ -36,6 +45,7 @@ if (env === 'production') {
   proxyOptions.secure = true
 }
 
+// httpApp.use(proxyProfixPath, createProxyMiddleware(proxyOptions))
 httpApp.use('/api', createProxyMiddleware(proxyOptions))
 
 //send the user to index html page inspite of the url

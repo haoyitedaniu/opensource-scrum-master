@@ -2,19 +2,23 @@
   "name": "opensource-scrum-master",
   "version": "0.0.1",
   "license": "MIT",
-  "authors": ["Tom Long", "Kelly Kang","Brent Liu"],
+  "authors": [
+    "Tom Long",
+    "Kelly Kang",
+    "Brent Liu"
+  ],
   "private": true,
   "scripts": {
     "build": "concurrently \"cd client &&  env-cmd -f .env.production npm run build\"",
     "build:dev": "concurrently  \"cd client && env-cmd -f .env.development npm run build\"",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "seed-admin-user": "cd server && npm run seed-admin-user",
-    "start": "concurrently \"cd server && npm run seed-admin-user\" \"cd server && PORT=3001 npm run start\" \"cd client && PORT=3000 npm run start\"",
-    "start:dev": "concurrently \"cd server && npm run seed-admin-user\" \"cd server && PORT=3001 npm run start\" \"cd client && PORT=3000  env-cmd -f .env.development npm run start\"",
+    "start": "concurrently \"cd server && npm run seed-admin-user\" \"cd server && PORT=3001 npm run start\" \"cd client && PORT=3000 env-cmd -f .env.production npm run start\"",
+    "start:dev": "concurrently \"cd server && npm run seed-admin-user\" \"cd server && PORT=3001 npm run start\" \"cd client && PORT=3000  env-cmd -f .env.development npm run start:dev\"",
     "start:prod": "cd server && npm start:prod"
   },
   "dependencies": {
-    "concurrently": "^3.5.1",
+    "concurrently": "^3.6.1",
     "debug": "^4.1.1",
     "env-cmd": "^10.1.0",
     "express": "^4.16.4",

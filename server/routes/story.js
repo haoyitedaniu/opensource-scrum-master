@@ -69,7 +69,7 @@ router.post('/create', (req, res) => {
 
 //Create and Update Story
 router.post('/', (req, res, next) => {
-  console.log('body:', req.body)
+  // console.log('body:', req.body)
   const story = new Story(req.body)
   return story.save((err, data) => {
     if (err) {
@@ -108,7 +108,7 @@ router.get('/:id', (req, res, next) => {
 
 //Update Story Id
 router.post('/update/:id', (req, res, next) => {
-  console.log('body:', req.body)
+  // console.log('body:', req.body)
 
   dataToUpdate = req.body //
   // const story = new Story(req.body)

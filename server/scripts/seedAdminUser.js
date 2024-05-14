@@ -8,9 +8,9 @@ require('../helper/db.js')()
     if (db.readyState) {
       console.log('db is ready')
       //mongoose connection is now stored in dbConnectin
-      const password1 = 'TheMasterIsGr8' //The master is great
+      const password1 = process.env.SCRUM_ADMIN_PASSWORD || 'TheMasterIsGr8' //The master is great
       let newUser = new User({
-        username: 'scrummaster',
+        username: process.env.SCRUM_ADMIN_USERNAME || 'scrummaster',
         name: 'Scrum',
         lastName: 'Master',
         public: true,
