@@ -129,10 +129,11 @@
 
 #=================/etc/init.d/nginx/conf.d/local.conf==============
 
-server {
+```
+server{
 listen 443 ssl http2;
 listen [::]:443 ssl http2;
-server_name yourdomain.com; #Here you need to change to your own domain
+server_name yourdomain.com;
 root /usr/share/nginx/html;
 
     #ssl that works for https://yourdomain.com
@@ -195,6 +196,7 @@ ssl_certificate_key /home/user-data/ssl/ssl_private_key.pem;
         rewrite ^(.*) https://yourdomain.com$1 permanent;
 
 }
+```
 
 #==================================================================
 
