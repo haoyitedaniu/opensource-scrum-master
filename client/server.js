@@ -3,10 +3,10 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 const httpApp = express()
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000
 const env = process.env.NODE_ENV || 'development'
 httpApp.use(express.static(path.join(__dirname, './build')))
-const backendUri = process.env.BACKEND_URI || 'http://localhost:4001'
+const backendUri = process.env.BACKEND_URI || 'http://localhost:3001'
 //proxy to back-end api calls
 //(note that it has to be infront of bodyParser and cookieParser for axios post to work)
 
