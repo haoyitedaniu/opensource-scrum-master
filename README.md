@@ -128,6 +128,7 @@
     			#Put the following content in the file
 
 #=================/etc/init.d/nginx/conf.d/local.conf==============
+
 server {
 listen 443 ssl http2;
 listen [::]:443 ssl http2;
