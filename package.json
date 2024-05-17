@@ -2,19 +2,22 @@
   "name": "opensource-scrum-master",
   "version": "0.0.1",
   "license": "MIT",
-  "authors": ["Tom Long", "Kelly Kang","Brent Liu"],
+  "authors": [
+    "Tom Long",
+    "Kelly Kang",
+    "Brent Liu"
+  ],
   "private": true,
   "scripts": {
     "build": "concurrently \"cd client &&  env-cmd -f .env.production npm run build\"",
     "build:dev": "concurrently  \"cd client && env-cmd -f .env.development npm run build\"",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
     "seed-admin-user": "cd server && npm run seed-admin-user",
-    "start": "concurrently \"cd server && npm run seed-admin-user\" \"cd server && PORT=3001 npm run start\" \"cd client && PORT=3000 npm run start\"",
-    "start:dev": "concurrently \"cd server && npm run seed-admin-user\" \"cd server && PORT=3001 npm run start\" \"cd client && PORT=3000  env-cmd -f .env.development npm run start\"",
-    "start:prod": "cd server && npm start:prod"
+    "start": "concurrently \"cd server && (NODE_ENV=\"production\" MONGODB_URI=\"mongodb://localhost:27017/opensource-scrum-database\" SCRUM_ADMIN_USERNAME=\"greatmaster\" SCRUM_ADMIN_PASSWORD=\"TheMasterIsGr8\" npm run seed-admin-user)\"       \"cd server && (NODE_ENV=\"production\"  MONGODB_URI=\"mongodb://localhost:27017/opensource-scrum-database\" PORT=4001 npm run start) \"                                 \"cd client && ( NODE_ENV=\"production\" BACKEND_URI=\"http://localhost:4001\" REACT_APP_BASENAME=\"/scrum\" PUBLIC_URL=\"/scrum/\" PORT=4000 npm run start)\" ",
+    "start:dev": "concurrently \"cd server && npm run seed-admin-user\" \"cd server &&  npm run start:dev\" \"cd client && env-cmd -f .env.development npm run start:dev\""
   },
   "dependencies": {
-    "concurrently": "^3.5.1",
+    "concurrently": "^3.6.1",
     "debug": "^4.1.1",
     "env-cmd": "^10.1.0",
     "express": "^4.16.4",

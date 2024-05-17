@@ -140,6 +140,10 @@ router.post('/login', (req, res, next) => {
   //if the password is correct, then return the user without the password spelled out
   const username = req.body.username
   const password = req.body.password
+
+  console.log("this is user name:",username)
+  console.log("this is password:", password)
+
   if (!username || !password)
     next({ status: '0', err: 'not able to login', success: false })
   const regularExpr = new RegExp('^' + username + '$', 'i')
@@ -154,6 +158,9 @@ router.post('/login', (req, res, next) => {
         next({ status: '0', message: 'not able to login', success: false })
         // throw new Error('did not find the user')
       }
+
+      console.log("this is user:",user)
+	    
       if (password !== user.password) {
         next({ status: '0', message: 'not able to login', success: false })
       }

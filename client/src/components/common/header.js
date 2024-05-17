@@ -78,28 +78,31 @@ class Header extends Component {
     const isUserLoggedIn = this.props.isUserLoggedIn
     const isUserAdmin = this.props.isUserAdmin
     const currentUserName = this.props.currentUserName
+    const basename = process.env.REACT_APP_BASENAME || ''
+    // REACT_APP_BASENAME=/master   //deploy under /master
+    // REACT_APP_BASENAME=          //deploy under / (by default)
 
     return (
       <header>
         <div className="container containerDashboard">
           <div className="mainMenu">
             <ul>
-              <Link to="/scrum" activeClassName="active">
+              <Link to={`${basename}/`} activeClassName="active">
                 <li>
                   <i className="fas fa-folder-open"></i>
                   <span className="mainMenuText">Projects</span>
                 </li>
               </Link>
-              {/* <Link to="/scrum/about" activeClassName="active">
+              <Link to={`${basename}/about`} activeClassName="active">
                 <li>
                   <i className="fas fa-thumbs-up" />
                   <span className="mainMenuText">About</span>
                 </li>
-              </Link> */}
+              </Link>
               <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href="opensource-scrum-master.com/scrum"
+                href={`opensource-scrum-master.com/${basename}`}
               >
                 {/* <li><i className="fas fa-code-branch"/>
                       <span className="mainMenuText">Fork Me on Github</span>

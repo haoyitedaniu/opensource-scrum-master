@@ -125,8 +125,10 @@ class Dashboard extends Component {
   }
 
   getStoryDetails = () => {
+    //need get basename here
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .get(`/scrum/api/story`)
+      .get(`${basename}/api/story`)
       .then((r) => {
         //here we should also sort the stories by title
 
@@ -165,8 +167,11 @@ class Dashboard extends Component {
       //make sure we know the User story Id (storyId)
       return
     }
+
+    const basename = process.env.REACT_APP_BASENAME || ''
+
     axios
-      .get(`/scrum/api/tasks/${this.props.params.id}`)
+      .get(`${basename}/api/tasks/${this.props.params.id}`)
       .then((r) => {
         //here we sort the tasks in r.data by title
         //or due date
@@ -214,8 +219,9 @@ class Dashboard extends Component {
 
     let yesno = prompt('Please enter yes to continue to delete this user story')
     if (yesno && yesno.toLowerCase() === 'yes') {
+      const basename = process.env.REACT_APP_BASENAME || ''
       axios
-        .delete('/scrum/api/story/delete/' + id)
+        .delete(`${basename}/api/story/delete/` + id)
         .then(
           function (response) {
             if (response.status === '1') alert('ok')
@@ -256,12 +262,15 @@ class Dashboard extends Component {
         const subtitle = story.title.substring(0, Math.min(titleLength, 10))
         const title = subtitle + (titleLength > 10 ? '...' : '').toString()
         const storyId = story._id
+
+        const basename = process.env.REACT_APP_BASENAME || ''
+
         return (
           <li key={index}>
             <div>
               <Link
                 style={{ display: 'inline' }}
-                to={`/scrum/story/${story.storyId}`}
+                to={`${basename}/story/${story.storyId}`}
                 activeClassName="active"
               >
                 <i className="fas fa-list-alt"></i>

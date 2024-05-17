@@ -38,8 +38,9 @@ class AddUser extends React.Component {
   }
 
   handleClick = (event) => {
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .post('/scrum/api/users/create', {
+      .post(`${basename}/api/users/create`, {
         username: this.state.username,
         name: this.state.name,
         lastName: this.state.lastName,

@@ -43,8 +43,9 @@ class UpdateTaskModal extends React.Component {
   }
 
   getUsers() {
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .get('/scrum/api/users')
+      .get(`${basename}/api/users`)
       .then((r) => {
         let userContent
         const users = r.data
@@ -77,8 +78,9 @@ class UpdateTaskModal extends React.Component {
   }
 
   getTaskCreatedByUser = (userId) => {
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .get(`/scrum/api/users/${userId}`)
+      .get(`${basename}/api/users/${userId}`)
       .then((response) => {
         // console.log('response.data', response.data)
         if (response.data && response.data.success) {
@@ -100,8 +102,10 @@ class UpdateTaskModal extends React.Component {
       alert('you must login first')
       return
     }
+    const basename = process.env.REACT_APP_BASENAME || ''
+
     axios
-      .put(`/scrum/api/tasks/update/${id}`, {
+      .put(`${basename}/api/tasks/update/${id}`, {
         title: this.state.title,
         content: this.state.content,
         status: this.state.status,

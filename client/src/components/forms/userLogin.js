@@ -47,12 +47,17 @@ class UserLogin extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     })
-    console.log(this.state.dueDate)
+    // console.log(this.state.dueDate)
   }
 
   handleClick = (event) => {
+    const basename = process.env.REACT_APP_BASENAME || '' // '/'
+	  //
+    const pathToCallBackEnd=`${basename}/api/users/login`
+
+    console.log("path to call",pathToCallBackEnd) //This is going to /scrum/api/users/login 
     axios
-      .post('/scrum/api/users/login', {
+      .post(`${basename}/api/users/login`, {
         username: this.state.username,
         password: this.state.password,
       })

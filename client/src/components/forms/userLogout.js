@@ -35,8 +35,9 @@ class UserLogout extends React.Component {
 
   handleClick = (event) => {
     const username = this.getCurrentUserName()
+    const basename = process.env.REACT_APP_BASENAME || ''
     axios
-      .post('/scrum/api/users/logout', {
+      .post(`${basename}/api/users/logout`, {
         username: username,
       })
       .then((response) => {
