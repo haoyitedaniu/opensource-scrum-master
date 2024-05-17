@@ -16,7 +16,7 @@
     	#install yarn by
 
     	npm install -g yarn
-
+	npm install -g env-cmd
 
     	#install packages for opensource-scrum-master server and client
     	cd opensource-scrum-master
@@ -51,8 +51,8 @@
     	#or to run in production mode:
     	yarn run start
     		#check if back-end running:  http://localhost:3001
-    		#check if front-end running:  http://localhost:3000/master
-    			# where /master is the basename that you specified in client/.env.production
+    		#check if front-end running:  http://localhost:3000/scrum
+    			# where /scrum is the basename that you specified in client/.env.production
 
     	#
     	#The program will pre-populate a default user name with default password defined in server/scripts/seedAdminUser.js
@@ -109,7 +109,7 @@
 
     		#run opensource-scrum-master
     	  	chmod +x ./start-scrum-master.sh  #make it executable
-    			./start-scrum-master.sh
+       			 ./start-scrum-master.sh
     		# execute the program, which will run server on 3001 and client on 3000
     		# if you want to change ports, you need to edit ./start-scrum-master.sh file
 
@@ -153,7 +153,7 @@
 
     			cd HOME/opensource-scrum-master
     			chmod +x ./kill-scrum-master.sh
-    			./kill-scrum-master.sh   #will kill scrum-master codes and also codes running on port 3001 (back-end server) and 3000 (front-end client)
+    			./kill-scrum-master.sh   #will kill scrum-master codes and also codes running on port 4001 (back-end server) and 4000 (front-end client)
 
     			#Note if you use different ports, you need to edit ./kill-scrum-master.sh
 
@@ -167,4 +167,4 @@ Todo:
 
     4)Add project admin so that only project admin users can create/delete users to the project or create/delete user stories under that project
 
-5)CSS, allow showing stories list and login on mobile devices (so only showing up on wide screens)
+    5)CSS, allow showing stories list and login on mobile devices (so only showing up on wide screens)

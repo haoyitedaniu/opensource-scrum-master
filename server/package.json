@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed-admin-user": "node ./scripts/seedAdminUser.js",
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "start:dev":"NODE_ENV=development nodemon ./bin/www"
   },
   "author": "Tom Long, Kelly Kang, Brent Liu",
   "license": "MIT",

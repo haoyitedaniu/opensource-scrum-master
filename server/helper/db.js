@@ -7,8 +7,11 @@ const config = require('./mongo.json')[env] //read the mongo.json file in curren
 module.exports = () => {
   mongoose.set('useCreateIndex', true)
   const envUrl = process.env[config.use_env_variable]
+
+  //e.g. mongodb://localhost:27017/opensource-scrum-database
   //Define a local URL variable if we're not in production
   console.log("port",config.port)
+
   const localUrl = `mongodb://${config.host}/${config.database}`
   //set the connection URL
   const mongoUrl = envUrl ? envUrl : localUrl

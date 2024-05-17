@@ -44,12 +44,12 @@ const basename = process.env.REACT_APP_BASENAME || ''
 export default (
   <Route>
     {/*use pid, storyid and sid to access project, story and task/> */}
-    <Route path={`/project/:pid/story/:sid/task/:tid`} exact component={App} />
-    <Route path={`/story/:id/task/:tid`} exact component={App} />
-    <Route path={`/story/:id`} exact component={App} />
+    <Route path={`${basename}/project/:pid/story/:sid/task/:tid`} exact component={App} />
+    <Route path={`${basename}/story/:id/task/:tid`} exact component={App} />
+    <Route path={`${basename}/story/:id`} exact component={App} />
     {/* <Route path="/scrum/about" exact component={About} /> */}
-    <Route exact path={`/`} component={App} />
-    <Route path={`/*`} exact component={NotFoundPage} />
-    <Route exact path="*" component={IndexPage} />
+    <Route exact path={`${basename}`} component={App} />
+    <Route path={`${basename}/*`} exact component={NotFoundPage} />
+    <Route exact path={`*`} component={IndexPage} />
   </Route>
 )

@@ -23,6 +23,7 @@ require('../helper/db.js')()
       newUser
         .save()
         .then((user) => {
+	  console.log("new user created:", user) 
           db.close()
           return
         })
